@@ -1,0 +1,222 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ryouk's Den</title>
+  <style>
+    :root {
+      --bg-color: #f9f9f9;
+      --text-color: #333;
+      --card-bg: #fff;
+    }body.dark-mode {
+  --bg-color: #1e1e1e;
+  --text-color: #f0f0f0;
+  --card-bg: #2c2c2c;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg-color) url('https://images.unsplash.com/photo-1599491446982-82f236a48195?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--text-color);
+  margin: 0;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+h1, h2 {
+  text-align: center;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+}
+
+.section {
+  margin: 30px auto;
+  max-width: 900px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .section {
+  background: rgba(44, 44, 44, 0.9);
+}
+
+h3 {
+  margin-top: 25px;
+  color: var(--text-color);
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+iframe {
+  width: 100%;
+  height: 315px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 6px;
+}
+
+.toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #444;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.opening-card {
+  margin: 20px 0;
+}
+
+.tactic-card {
+  margin: 20px 0;
+}
+
+.tactic-card img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}
+
+  </style>
+</head>
+<body><button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+  <h1>♟ Ryouk's Den</h1>  <div class="section">
+    <h2>🎯 Chess Tactics Explained</h2><div class="tactic-card">
+  <h3>Fork</h3>
+  <p>A fork is when one piece (often a knight) attacks two or more enemy pieces at the same time. The opponent can only save one, so you gain material.</p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Knight_fork_example.svg/800px-Knight_fork_example.svg.png" alt="Fork Example">
+</div>
+
+<div class="tactic-card">
+  <h3>Skewer</h3>
+  <p>A skewer is a tactic where a valuable piece is attacked first, and when it moves, a weaker piece behind it gets captured. It’s the reverse of a pin.</p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Skewer.jpg" alt="Skewer Example">
+</div>
+
+<div class="tactic-card">
+  <h3>Discovered Attack</h3>
+  <p>When one piece moves away, uncovering an attack from another piece. Can be deadly when it also involves a check (discovered check).</p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Chess_discovered_check_example.svg" alt="Discovered Attack Example">
+</div>
+
+<div class="tactic-card">
+  <h3>Smothered Mate</h3>
+  <p>A checkmate delivered by a knight when the king is surrounded ("smothered") by its own pieces and has no escape.</p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Smothered_mate_example.png" alt="Smothered Mate">
+</div>
+
+<div class="tactic-card">
+  <h3>Desperado</h3>
+  <p>A tactic where a piece that's going to be lost anyway makes a final sacrifice to gain material before it dies.</p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Chess_desperado_example.svg/800px-Chess_desperado_example.svg.png" alt="Desperado Tactic">
+</div>
+
+  </div>  <div class="section">
+    <h2>🎓 Openings with Video Lessons</h2><div class="opening-card">
+  <h3>Najdorf Sicilian</h3>
+  <p>A sharp and aggressive response to 1.e4, used by top players like Fischer and Kasparov.</p>
+  <iframe src="https://www.youtube.com/embed/KfLYXrMoxT0" allowfullscreen></iframe>
+</div>
+
+<div class="opening-card">
+  <h3>London System</h3>
+  <p>A simple yet solid setup for White, easy to learn and powerful against many defenses.</p>
+  <iframe src="https://www.youtube.com/embed/WtBMFWuwv1E" allowfullscreen></iframe>
+</div>
+
+<div class="opening-card">
+  <h3>Nimzo-Indian Defense</h3>
+  <p>A flexible and strategic response to 1.d4, aiming to challenge the center early.</p>
+  <iframe src="https://www.youtube.com/embed/htNc9zFPdQs" allowfullscreen></iframe>
+</div>
+
+<div class="opening-card">
+  <h3>Ruy Lopez</h3>
+  <p>A classical and deep opening that targets the e5 pawn and builds long-term pressure.</p>
+  <iframe src="https://www.youtube.com/embed/41rPFNY_CAY" allowfullscreen></iframe>
+</div>
+
+<div class="opening-card">
+  <h3>English Opening</h3>
+  <p>A flexible opening that focuses on slow central control through the flanks.</p>
+  <iframe src="https://www.youtube.com/embed/O0hWWfcfEHg" allowfullscreen></iframe>
+</div>
+
+<div class="opening-card">
+  <h3>Pirc Defense</h3>
+  <p>A defense that allows White to take space while Black prepares counterattacks.</p>
+  <iframe src="https://www.youtube.com/embed/7z66hiJAqmo" allowfullscreen></iframe>
+</div>
+
+<div class="opening-card">
+  <h3>Fried Liver Attack</h3>
+  <p>A wild and tactical weapon in the Italian Game, ideal for catching opponents off guard early.</p>
+  <iframe src="https://www.youtube.com/embed/0ITi9Jc0J-o" allowfullscreen></iframe>
+</div>
+
+<div class="opening-card">
+  <h3>King's Gambit</h3>
+  <p>An aggressive choice by White, offering a pawn to dominate the center and open lines fast.</p>
+  <iframe src="https://www.youtube.com/embed/n5ImJ2row6E" allowfullscreen></iframe>
+</div>
+
+<div class="opening-card">
+  <h3>Caro-Kann Defense</h3>
+  <p>One of the most solid defenses against 1.e4, focusing on structure and development.</p>
+  <iframe src="https://www.youtube.com/embed/uLfrt7Atldo" allowfullscreen></iframe>
+</div>
+
+<div class="opening-card">
+  <h3>Queen's Gambit</h3>
+  <p>A classical opening where White gives up a pawn temporarily to control the center and develop quickly.</p>
+  <iframe src="https://www.youtube.com/embed/HdHWAuQRG7E" allowfullscreen></iframe>
+</div>
+
+<p style="text-align:center; margin-top:30px;">🎥 More at <a href="https://youtube.com/@chesswebsite" target="_blank">TheChessWebsite Channel</a></p>
+
+  </div>  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script></body>
+</html>
