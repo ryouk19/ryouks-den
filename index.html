@@ -1,237 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ryouk's Den</title>
-  <style>
-    :root {
-      --bg-color: #f9f9f9;
-      --text-color: #333;
-      --card-bg: #fff;
-    }
+    <meta charset="UTF-8">
+    <meta name="ryouks-den" content="Chess website recreated by Ryouk">
+    <title>Ryouk's Den - Chess Website</title>
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body.dark-mode {
-      --bg-color: #1e1e1e;
-      --text-color: #f0f0f0;
-      --card-bg: #2c2c2c;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #121212;
+            color: #f0f0f0;
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--bg-color) url('https://i.postimg.cc/RJ7rf25T/sky.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: var(--text-color);
-      margin: 0;
-      padding: 20px;
-      transition: all 0.3s ease;
-    }
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1e1e1e;
+            padding: 10px 30px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+        }
 
-    h1, h2 {
-      text-align: center;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-    }
+        .logo img {
+            width: 60px;
+            height: auto;
+        }
 
-    .section {
-      margin: 30px auto;
-      max-width: 900px;
-      background: rgba(255, 255, 255, 0.85);
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
 
-    body.dark-mode .section {
-      background: rgba(44, 44, 44, 0.9);
-    }
+        nav ul a {
+            text-decoration: none;
+        }
 
-    h3 {
-      margin-top: 25px;
-      color: var(--text-color);
-    }
+        nav ul li {
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
 
-    ul {
-      list-style-type: disc;
-      padding-left: 20px;
-    }
+        nav ul li:hover {
+            background-color: #2c2c2c;
+        }
 
-    li {
-      margin-bottom: 10px;
-    }
+        /* Main Section */
+        main {
+            padding: 30px;
+            background-image: url(https://tse2.mm.bing.net/th/id/OIP.LfkWGx-q3n3SkN8Mrn2s5wHaNK?rs=1&pid=ImgDetMain&o=7&rm=3);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
 
-    a {
-      color: #1a73e8;
-      text-decoration: none;
-    }
+        h1,
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #101010;
+        }
 
-    a:hover {
-      text-decoration: underline;
-    }
+        h3 {
+            color: #00bcd4;
+            margin-top: 15px;
+        }
 
-    iframe {
-      width: 100%;
-      height: 315px;
-      margin-top: 10px;
-      border: none;
-      border-radius: 6px;
-    }
+        section {
+            background-color: rgba(30, 30, 30, 0.8);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
 
-    .toggle-btn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #444;
-      color: #fff;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      z-index: 1000;
-    }
+        section:hover {
+            transform: scale(1.02);
+            background-color: rgba(40, 40, 40, 0.9);
+        }
 
-    .opening-card,
-    .tactic-card {
-      margin: 20px 0;
-    }
+        /* Card Layout for Openings */
+        .card,
+        main>div {
+            background-color: #1f1f1f;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
 
-    .navbar {
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 10px 20px;
-      text-align: center;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
+        main>div:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+        }
 
-    .navbar a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 12px;
-      font-weight: bold;
-      font-size: 16px;
-    }
+        iframe {
+            width: 100%;
+            height: 315px;
+            border: none;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
 
-    .navbar a:hover {
-      text-decoration: underline;
-      color: #ffdd57;
-    }
+        /* Footer */
+        footer {
+            text-align: center;
+            background-color: #1e1e1e;
+            padding: 20px;
+            color: #aaa;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
 
-    @media (max-width: 600px) {
-      body {
-        padding: 10px;
-      }
+        footer a {
+            color: #00bcd4;
+            text-decoration: none;
+        }
 
-      h1 {
-        font-size: 24px;
-      }
-
-      h2 {
-        font-size: 20px;
-      }
-    }
-  </style>
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
+
 <body>
-  <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <header>
+        <div class="logo">
+            <img src="https://static.vecteezy.com/system/resources/previews/023/959/762/non_2x/chess-logo-design-illustration-vector.jpg"
+                alt="logo" class="main-logo">
+        </div>
+        <nav>
+            <ul>
+                <a href="index.html">
+                    <li>Home</li>
+                </a>
+                <a href="puzzle.html">
+                    <li>Puzzle</li>
+                </a>
+                <a href="#" id="go-to-openings">
+                    <li>Opening</li>
+                </a>
+                <a href="profile.html">
+                    <li>Profile</li>
+                </a>
+                <a href="about.html">
+                    <li>About</li>
+                </a>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Ryouk's Den</h1>
+        <h2>Chess Tactics & Pawn Concepts</h2>
+        <section>
+            <h3>Fork</h3>
+            <p>One piece attacks two or more enemy pieces at once — usually a knight.</p>
+        </section>
+        <section>
+            <h3>Skewer</h3>
+            <p>An attack that hits a valuable piece first, then a weaker one behind it.</p>
+        </section>
+        <section>
+            <h3>Discovered Attack</h3>
+            <p>Moving one piece reveals an attack from another behind it.</p>
+        </section>
+        <section>
+            <h3>Smothered Mate</h3>
+            <p>Checkmate by a knight when the king is trapped by its own pieces.</p>
+        </section>
+        <section>
+            <h3>Desperado</h3>
+            <p>A piece about to be lost sacrifices itself for max value.</p>
+        </section>
+        <section>
+            <h3>Passed Pawn</h3>
+            <p>A pawn with no enemies blocking its promotion path.</p>
+        </section>
+        <section>
+            <h3>Doubled Pawns</h3>
+            <p>Two friendly pawns stacked on the same file — usually a weakness.</p>
+        </section>
+        </section>
+        <section>
+            <h3>Isolated Pawn</h3>
+            <p>No friendly pawns on adjacent files to help defend.</p>
+        </section>
+        </section>
+        <section>
+            <h3>Flank Pawn</h3>
+            <p>Pawns on the edge (a, b, g, h-files), useful in side attacks.</p>
+        </section>
+        </section>
+        <section>
+            <h3>Pawn Chain</h3>
+            <p>Pawns supporting each other diagonally, forming a solid structure.</p>
+        </section>
+        </section>
+        <section>
+            <h3>Zugzwang</h3>
+            <p>A situation where any move worsens your position — often decisive in endgames.</p>
+        </section>
+        </section>
+        <section>
+            <h3>Perpetual Check</h3>
+            <p>Endless checks that can’t be escaped — forces a draw.</p>
+        </section>
 
-  <nav class="navbar">
-    <a href="index.html">🏠 Home</a>
-    <a href="puzzles.html">🧩 Puzzles</a>
-    <a href="openings.html">📖 Openings</a>
-    <a href="profile.html">👤 Profile</a>
-    <a href="about.html">ℹ️ About</a>
-  </nav>
+        <h2 id="openings">Openings with Video Lessons</h2>
+        <div>
+            <section class="card"></section>
+            <h3>Najdorf Sicilian</h3>
+            <iframe src="https://www.youtube.com/embed/KfLYXrMoxT0" allowfullscreen></iframe>
+        </div>
+        <div>
+            <h3>London System</h3>
+            <p>A simple and solid setup for White, great against many defenses.</p>
+            <iframe src="https://www.youtube.com/embed/WtBMFWuwv1E" allowfullscreen></iframe>
+        </div>
+        <div>
+            <h3>Nimzo-Indian Defense</h3>
+            <p>Black’s flexible reply to 1.d4, targeting the center early on.</p>
+            <iframe src="https://www.youtube.com/embed/htNc9zFPdQs" allowfullscreen></iframe>
+        </div>
+        <div>
+            <h3>Ruy Lopez</h3>
+            <p>A classical opening that builds pressure on the center and e5 pawn.</p>
+            <iframe src="https://www.youtube.com/embed/41rPFNY_CAY" allowfullscreen></iframe>
+        </div>
+        <div>
+            <h3>English Opening</h3>
+            <p>Controls the center from the side — flexible and strategic.</p>
+            <iframe src="https://www.youtube.com/embed/O0hWWfcfEHg" allowfullscreen></iframe>
+        </div>
+        <div>
+            <h3>Pirc Defense</h3>
+            <p>Black allows White space and waits to counterattack.</p>
+            <iframe src="https://www.youtube.com/embed/7z66hiJAqmo" allowfullscreen></iframe>
+        </div>
+        <div>
+            <h3>Fried Liver Attack</h3>
+            <p>A wild and tactical Italian line — deadly if opponent slips.</p>
+            <iframe src="https://www.youtube.com/embed/0ITi9Jc0J-o" allowfullscreen></iframe>
+        </div>
+        <div>
+            <h3>King's Gambit</h3>
+            <p>White sacrifices a pawn early to open lines and attack fast.</p>
+            <iframe src="https://www.youtube.com/embed/n5ImJ2row6E" allowfullscreen></iframe>
+        </div>
+        <div>
+            <h3>Caro-Kann Defense</h3>
+            <p>A rock-solid defense against 1.e4 that focuses on structure.</p>
+            <iframe src="https://www.youtube.com/embed/uLfrt7Atldo" allowfullscreen></iframe>
+        </div>
+        <div>
+            <h3>Queen's Gambit</h3>
+            <p>White offers a pawn for center control and quick development.</p>
+            <iframe src="https://www.youtube.com/embed/HdHWAuQRG7E" allowfullscreen></iframe>
+        </div>
+    </main>
+    <footer>
+        Copyright &copy; 2025 | Ryouk's Den | All rights reserved
+        <br>
+        More at <a href="https://youtube.com/@chesswebsite" target="_blank">TheChessWebsite Channel</a>
+    </footer>
+    <script>
+        // Animate sections on scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
 
-  <h1>♟ Ryouk's Den</h1>
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                sections.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    if (sectionTop < windowHeight - 50) {
+                        section.style.opacity = 1;
+                        section.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            // Smooth scroll to openings section
+            document.getElementById('go-to-openings').addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('openings').scrollIntoView({ behavior: 'smooth' });
+            });
 
-  <div class="section">
-    <h2>🎯 Chess Tactics & Pawn Concepts</h2>
+            // Initial style
+            sections.forEach(section => {
+                section.style.opacity = 0;
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'all 0.6s ease';
+            });
 
-    <div class="tactic-card"><h3>♞ Fork</h3><p>One piece attacks two or more enemy pieces at once — usually a knight.</p></div>
-    <div class="tactic-card"><h3>🏹 Skewer</h3><p>An attack that hits a valuable piece first, then a weaker one behind it.</p></div>
-    <div class="tactic-card"><h3>🔎 Discovered Attack</h3><p>Moving one piece reveals an attack from another behind it.</p></div>
-    <div class="tactic-card"><h3>🐴 Smothered Mate</h3><p>Checkmate by a knight when the king is trapped by its own pieces.</p></div>
-    <div class="tactic-card"><h3>💣 Desperado</h3><p>A piece about to be lost sacrifices itself for max value.</p></div>
-    <div class="tactic-card"><h3>♟ Passed Pawn</h3><p>A pawn with no enemies blocking its promotion path.</p></div>
-    <div class="tactic-card"><h3>♟ Doubled Pawns</h3><p>Two friendly pawns stacked on the same file — usually a weakness.</p></div>
-    <div class="tactic-card"><h3>♟ Isolated Pawn</h3><p>No friendly pawns on adjacent files to help defend.</p></div>
-    <div class="tactic-card"><h3>➡ Flank Pawn</h3><p>Pawns on the edge (a, b, g, h-files), useful in side attacks.</p></div>
-    <div class="tactic-card"><h3>⛓ Pawn Chain</h3><p>Pawns supporting each other diagonally, forming a solid structure.</p></div>
-    <div class="tactic-card"><h3>😵 Zugzwang</h3><p>A situation where any move worsens your position — often decisive in endgames.</p></div>
-    <div class="tactic-card"><h3>🔁 Perpetual Check</h3><p>Endless checks that can’t be escaped — forces a draw.</p></div>
-  </div>
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); // Reveal any already visible
+        });
 
-  <div class="section">
-    <h2>🎓 Openings with Video Lessons</h2>
-
-    <div class="opening-card">
-      <h3>Najdorf Sicilian</h3>
-      <p>A sharp and aggressive response to 1.e4, used by Fischer and Kasparov.</p>
-      <iframe src="https://www.youtube.com/embed/KfLYXrMoxT0" allowfullscreen></iframe>
-    </div>
-
-    <div class="opening-card">
-      <h3>London System</h3>
-      <p>A simple and solid setup for White, great against many defenses.</p>
-      <iframe src="https://www.youtube.com/embed/WtBMFWuwv1E" allowfullscreen></iframe>
-    </div>
-
-    <div class="opening-card">
-      <h3>Nimzo-Indian Defense</h3>
-      <p>Black’s flexible reply to 1.d4, targeting the center early on.</p>
-      <iframe src="https://www.youtube.com/embed/htNc9zFPdQs" allowfullscreen></iframe>
-    </div>
-
-    <div class="opening-card">
-      <h3>Ruy Lopez</h3>
-      <p>A classical opening that builds pressure on the center and e5 pawn.</p>
-      <iframe src="https://www.youtube.com/embed/41rPFNY_CAY" allowfullscreen></iframe>
-    </div>
-
-    <div class="opening-card">
-      <h3>English Opening</h3>
-      <p>Controls the center from the side — flexible and strategic.</p>
-      <iframe src="https://www.youtube.com/embed/O0hWWfcfEHg" allowfullscreen></iframe>
-    </div>
-
-    <div class="opening-card">
-      <h3>Pirc Defense</h3>
-      <p>Black allows White space and waits to counterattack.</p>
-      <iframe src="https://www.youtube.com/embed/7z66hiJAqmo" allowfullscreen></iframe>
-    </div>
-
-    <div class="opening-card">
-      <h3>Fried Liver Attack</h3>
-      <p>A wild and tactical Italian line — deadly if opponent slips.</p>
-      <iframe src="https://www.youtube.com/embed/0ITi9Jc0J-o" allowfullscreen></iframe>
-    </div>
-
-    <div class="opening-card">
-      <h3>King's Gambit</h3>
-      <p>White sacrifices a pawn early to open lines and attack fast.</p>
-      <iframe src="https://www.youtube.com/embed/n5ImJ2row6E" allowfullscreen></iframe>
-    </div>
-
-    <div class="opening-card">
-      <h3>Caro-Kann Defense</h3>
-      <p>A rock-solid defense against 1.e4 that focuses on structure.</p>
-      <iframe src="https://www.youtube.com/embed/uLfrt7Atldo" allowfullscreen></iframe>
-    </div>
-
-    <div class="opening-card">
-      <h3>Queen's Gambit</h3>
-      <p>White offers a pawn for center control and quick development.</p>
-      <iframe src="https://www.youtube.com/embed/HdHWAuQRG7E" allowfullscreen></iframe>
-    </div>
-
-    <p style="text-align:center; margin-top:30px;">
-      🎥 More at <a href="https://youtube.com/@chesswebsite" target="_blank">TheChessWebsite Channel</a>
-    </p>
-  </div>
-
-  <script>
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark-mode");
-    }
-  </script>
+    </script>
 </body>
+
 </html>
