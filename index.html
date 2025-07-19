@@ -5,144 +5,13 @@
     <meta charset="UTF-8">
     <meta name="ryouks-den" content="Chess website recreated by Ryouk">
     <title>Ryouk's Den - Chess Website</title>
-    <style>
-        /* Global Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #121212;
-            color: #f0f0f0;
-            line-height: 1.6;
-            padding-bottom: 40px;
-        }
-
-        /* Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #1e1e1e;
-            padding: 10px 30px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
-        }
-
-        .logo img {
-            width: 60px;
-            height: auto;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        nav ul a {
-            text-decoration: none;
-        }
-
-        nav ul li {
-            padding: 8px 16px;
-            border-radius: 8px;
-            transition: background-color 0.3s;
-            cursor: pointer;
-        }
-
-        nav ul li:hover {
-            background-color: #2c2c2c;
-        }
-
-        /* Main Section */
-        main {
-            padding: 30px;
-            background-image: url(https://tse2.mm.bing.net/th/id/OIP.LfkWGx-q3n3SkN8Mrn2s5wHaNK?rs=1&pid=ImgDetMain&o=7&rm=3);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        h1,
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #101010;
-        }
-
-        h3 {
-            color: #00bcd4;
-            margin-top: 15px;
-        }
-
-        section {
-            background-color: rgba(30, 30, 30, 0.8);
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-        }
-
-        section:hover {
-            transform: scale(1.02);
-            background-color: rgba(40, 40, 40, 0.9);
-        }
-
-        /* Card Layout for Openings */
-        .card,
-        main>div {
-            background-color: #1f1f1f;
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 600px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        main>div:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
-        }
-
-        iframe {
-            width: 100%;
-            height: 315px;
-            border: none;
-            border-radius: 6px;
-            margin-top: 10px;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            background-color: #1e1e1e;
-            padding: 20px;
-            color: #aaa;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-
-        footer a {
-            color: #00bcd4;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
     <header>
         <div class="logo">
-            <img src="https://static.vecteezy.com/system/resources/previews/023/959/762/non_2x/chess-logo-design-illustration-vector.jpg"
-                alt="logo" class="main-logo">
+            <img src="/img/logo.jpg" alt="logo" class="main-logo">
         </div>
         <nav>
             <ul>
@@ -222,9 +91,10 @@
         </section>
 
         <h2 id="openings">Openings with Video Lessons</h2>
+
         <div>
-            <section class="card"></section>
             <h3>Najdorf Sicilian</h3>
+            <p>A sharp and aggressive Sicilian line for Black, full of tactical chances.</p>
             <iframe src="https://www.youtube.com/embed/KfLYXrMoxT0" allowfullscreen></iframe>
         </div>
         <div>
@@ -278,39 +148,7 @@
         <br>
         More at <a href="https://youtube.com/@chesswebsite" target="_blank">TheChessWebsite Channel</a>
     </footer>
-    <script>
-        // Animate sections on scroll
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('section');
-
-            const revealOnScroll = () => {
-                const windowHeight = window.innerHeight;
-                sections.forEach(section => {
-                    const sectionTop = section.getBoundingClientRect().top;
-                    if (sectionTop < windowHeight - 50) {
-                        section.style.opacity = 1;
-                        section.style.transform = 'translateY(0)';
-                    }
-                });
-            };
-            // Smooth scroll to openings section
-            document.getElementById('go-to-openings').addEventListener('click', (e) => {
-                e.preventDefault();
-                document.getElementById('openings').scrollIntoView({ behavior: 'smooth' });
-            });
-
-            // Initial style
-            sections.forEach(section => {
-                section.style.opacity = 0;
-                section.style.transform = 'translateY(20px)';
-                section.style.transition = 'all 0.6s ease';
-            });
-
-            window.addEventListener('scroll', revealOnScroll);
-            revealOnScroll(); // Reveal any already visible
-        });
-
-    </script>
+    <script src="/js/script.js"></script>
 </body>
 
 </html>
